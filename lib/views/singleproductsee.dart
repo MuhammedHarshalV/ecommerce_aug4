@@ -1,8 +1,7 @@
 import 'package:ecommerce_aug4/controler/cartcontroler.dart';
 import 'package:ecommerce_aug4/controler/productcontrolers.dart';
-import 'package:ecommerce_aug4/controler/search.dart';
-import 'package:ecommerce_aug4/views/searchscreen.dart';
-import 'package:ecommerce_aug4/widgets/cart.dart';
+
+import 'package:ecommerce_aug4/views/bottomnavscreen/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +19,7 @@ class _SingleproductState extends State<Singleproduct> {
     // print(context.watch<Productcontrolers>().singleprodetails!.id!.toString());
     List<String> sizes = ['S', 'M', 'L'];
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.green[100],
       appBar: AppBar(
         centerTitle: true,
         title: Text('Details', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -172,19 +171,11 @@ class _SingleproductState extends State<Singleproduct> {
   }
 
   Container _imagecontainer() {
-    // final productController = context.watch<Productcontrolers>();
-
-    // // Check if data is loaded
-    // if (productController.singleprodetails == null ||
-    //     productController.singleprodetails!.images == null ||
-    //     productController.singleprodetails!.images!.isEmpty) {
-    //   return Container(height: 350, width: double.infinity);
-    // }
-
     return Container(
       height: 350,
       width: double.infinity,
       decoration: BoxDecoration(
+        color: Colors.blue[100],
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
           image: NetworkImage(

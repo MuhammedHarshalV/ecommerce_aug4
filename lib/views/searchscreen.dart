@@ -1,4 +1,6 @@
+import 'package:ecommerce_aug4/controler/productcontrolers.dart';
 import 'package:ecommerce_aug4/controler/search.dart';
+import 'package:ecommerce_aug4/views/singleproductsee.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +17,7 @@ class _SearchscreenState extends State<Searchscreen> {
   Widget build(BuildContext context) {
     final searchresult = context.watch<Search>();
     return Scaffold(
+      backgroundColor: Colors.green[100],
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -84,39 +87,60 @@ class _SearchscreenState extends State<Searchscreen> {
                                       crossAxisSpacing: 10,
                                     ),
                                 itemBuilder:
-                                    (context, index) => Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Expanded(
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    searchresult
-                                                            .productdatas[index]
-                                                            .thumbnail
-                                                            .toString() ??
-                                                        '',
+                                    (context, index) => InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<Productcontrolers>()
+                                            .getsingle(
+                                              single:
+                                                  searchresult
+                                                      .productdatas[index]
+                                                      .id
+                                                      .toString(),
+                                            );
+
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder:
+                                                (context) => Singleproduct(),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: NetworkImage(
+                                                      searchresult
+                                                              .productdatas[index]
+                                                              .thumbnail
+                                                              .toString() ??
+                                                          '',
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            'price ${context.watch<Search>().productdatas[index].price.toString()}' ??
-                                                '',
-                                          ),
-                                          Text(
-                                            '${searchresult.productdatas[index].title}' ??
-                                                '',
-                                            style: TextStyle(
-                                              overflow: TextOverflow.ellipsis,
+                                            Text(
+                                              'price ${context.watch<Search>().productdatas[index].price.toString()}' ??
+                                                  '',
                                             ),
-                                          ),
-                                        ],
+                                            Text(
+                                              '${searchresult.productdatas[index].title}' ??
+                                                  '',
+                                              style: TextStyle(
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                               );

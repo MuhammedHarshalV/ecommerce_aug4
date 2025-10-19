@@ -3,7 +3,7 @@ import 'package:ecommerce_aug4/controler/homecontroler.dart';
 import 'package:ecommerce_aug4/controler/productcontrolers.dart';
 import 'package:ecommerce_aug4/controler/search.dart';
 import 'package:ecommerce_aug4/serviceclass/sqlservices/sqlservices.dart';
-import 'package:ecommerce_aug4/views/homepage.dart';
+import 'package:ecommerce_aug4/views/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +31,10 @@ class _MainState extends State<Main> {
         ChangeNotifierProvider(create: (context) => Cartcontroler()),
       ],
 
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: Homepage()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Splashscreen(),
+      ),
     );
   }
 }

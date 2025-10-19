@@ -1,4 +1,3 @@
-import 'package:ecommerce_aug4/appconfig/appconfig.dart';
 import 'package:ecommerce_aug4/models/product/productsample.dart';
 import 'package:ecommerce_aug4/models/singleproductmodel/singleproductget.dart';
 import 'package:ecommerce_aug4/serviceclass/apiservices/apiservice.dart';

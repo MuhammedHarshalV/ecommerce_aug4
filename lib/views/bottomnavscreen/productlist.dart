@@ -1,9 +1,9 @@
 import 'package:ecommerce_aug4/controler/homecontroler.dart';
 import 'package:ecommerce_aug4/controler/productcontrolers.dart';
-import 'package:ecommerce_aug4/serviceclass/sqlservices/sqlservices.dart';
+
 import 'package:ecommerce_aug4/views/searchscreen.dart';
 import 'package:ecommerce_aug4/views/singleproductsee.dart';
-import 'package:ecommerce_aug4/widgets/cart.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class Productlist extends StatefulWidget {
 
 class _ProductlistState extends State<Productlist> {
   int? clickfilter;
-  int navindex = 0;
+
   List<String> filter = ['All', 'Men', 'Women', 'Kids'];
   @override
   void initState() {
@@ -32,55 +32,13 @@ class _ProductlistState extends State<Productlist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green[100],
       appBar: AppBar(
+        backgroundColor: Colors.green[100],
+        centerTitle: true,
         title: Text('Discover', style: TextStyle(fontWeight: FontWeight.bold)),
-        actions: [
-          InkWell(
-            onTap: () {
-              Sqlservices.getdatacart();
-            },
-            child: Icon(Icons.notification_important),
-          ),
-          SizedBox(width: 10),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CartScreen()),
-              );
-            },
-            icon: Icon(Icons.card_travel),
-          ),
-        ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.red,
-        currentIndex: navindex,
-        onTap: (value) {
-          navindex = value;
-          //setState(() {});
-        },
-        items: [
-          BottomNavigationBarItem(
-            label: 'home',
-            icon: Icon(Icons.home, color: Colors.black),
-          ),
-          BottomNavigationBarItem(
-            label: 'Sved',
-            icon: Icon(Icons.favorite_border, color: Colors.black),
-          ),
-          BottomNavigationBarItem(
-            label: 'Cart',
-            icon: Icon(Icons.card_travel, color: Colors.black),
-          ),
-          BottomNavigationBarItem(
-            label: 'Settings',
-            icon: Icon(Icons.settings, color: Colors.black),
-          ),
-        ],
-      ),
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -128,6 +86,7 @@ class _ProductlistState extends State<Productlist> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
+                                  color: Colors.blue[100],
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Column(
@@ -260,7 +219,7 @@ class _ProductlistState extends State<Productlist> {
               height: 45,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.grey,
+                color: Colors.black,
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 7.0),
@@ -268,8 +227,13 @@ class _ProductlistState extends State<Productlist> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 5,
                   children: [
-                    Icon(Icons.search),
-                    Expanded(child: Text('Search anything..')),
+                    Icon(Icons.search, color: Colors.white),
+                    Expanded(
+                      child: Text(
+                        'Search anything..',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:sqflite/sqflite.dart';
 
 class Sqlservices {
@@ -18,7 +16,7 @@ class Sqlservices {
 
   static Future<List<Map>> getdatacart() async {
     List<Map> data = await database.query('cart');
-    // log(data.toString());
+
     return data;
   }
 

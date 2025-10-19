@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:ecommerce_aug4/controler/cartcontroler.dart';
 
-import 'package:ecommerce_aug4/models/product/productsample.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -34,9 +31,11 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final cartprovider = context.watch<Cartcontroler>();
     return Scaffold(
+      backgroundColor: Colors.green[100],
       appBar: AppBar(
-        title: Text('My Cart'),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.green[100],
+        title: Text('My Cart', style: TextStyle(fontWeight: FontWeight.bold)),
+
         centerTitle: true,
       ),
       body:

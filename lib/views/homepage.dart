@@ -1,4 +1,6 @@
-import 'package:ecommerce_aug4/views/productlist.dart';
+import 'package:ecommerce_aug4/views/bottomnavscreen/accountscreen.dart';
+import 'package:ecommerce_aug4/views/bottomnavscreen/cart.dart';
+import 'package:ecommerce_aug4/views/bottomnavscreen/productlist.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -9,46 +11,40 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  int navindex = 0;
+  List screens = [Productlist(), CartScreen(), Accountscreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(child: Image.asset('assets/images/bgimage.png')),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Productlist()),
-                );
-              },
-              child: Container(
-                margin: EdgeInsets.all(10),
+      body: screens[navindex],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.pink[100],
 
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 5,
-                    children: [
-                      Text(
-                        'Get Started',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Icon(Icons.arrow_forward, color: Colors.white),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        currentIndex: navindex,
+        onTap: (value) {
+          navindex = value;
+          setState(() {});
+        },
+        items: [
+          BottomNavigationBarItem(
+            label: 'home',
+            icon: Icon(Icons.home_outlined, color: Colors.black),
+            activeIcon: Icon(Icons.home, color: Colors.white),
+          ),
+
+          BottomNavigationBarItem(
+            label: 'Cart',
+            icon: Icon(Icons.shopping_bag_outlined, color: Colors.black),
+            activeIcon: Icon(Icons.shopping_bag, color: Colors.white),
+          ),
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Icon(Icons.person_2_outlined, color: Colors.black),
+            activeIcon: Icon(Icons.person, color: Colors.white),
+          ),
+        ],
       ),
     );
   }
